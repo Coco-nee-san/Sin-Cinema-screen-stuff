@@ -117,13 +117,7 @@
                     event.target.seekTo(startTime);
                     startTimeSet = true;
                 }
-
-                window.cinema_controller = player;
-            } else if (event.data == YT.PlayerState.PAUSED && playing) {
-                playing = false; // Well we dont need this..
-            }
-        }
-		// ==UserScript==
+				// ==UserScript==
 		// @name         youtube-adb
 		// @name:zh-CN   YouTube去广告
 		// @name:zh-TW   YouTube去廣告
@@ -435,6 +429,11 @@
 			}
 
 		})();
+                window.cinema_controller = player;
+            } else if (event.data == YT.PlayerState.PAUSED && playing) {
+                playing = false; // Well we dont need this..
+            }
+        }
     </script>
 </body>
 
