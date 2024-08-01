@@ -72,6 +72,10 @@
 
         function onPlayerReady(event) {
             event.target.playVideo();
+        }
+
+        function onPlayerStateChange(event) {
+		
 				//ADBLOCK
 				const clear = (() => {
 				const defined = v => v !== null && v !== undefined;
@@ -90,9 +94,6 @@
 			})();
 			clear();
 			//ADBLOCK END
-        }
-
-        function onPlayerStateChange(event) {
             if (event.data == YT.PlayerState.BUFFERING) {
                 event.target.playVideo();
                 event.target.seekTo(event.target.getCurrentTime(), true);
