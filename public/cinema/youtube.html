@@ -75,25 +75,6 @@
         }
 
         function onPlayerStateChange(event) {
-		
-				//ADBLOCK
-				const clear = (() => {
-				const defined = v => v !== null && v !== undefined;
-				const timeout = setInterval(() => {
-					const ad = [...document.querySelectorAll('.ad-showing')][0];
-					if (defined(ad)) {
-						const video = document.querySelector('video');
-						if (defined(video)) {
-							video.currentTime = video.duration;
-						}
-					}
-				}, 500);
-				return function() {
-					clearTimeout(timeout);
-				}
-			})();
-			clear();
-			//ADBLOCK END
             if (event.data == YT.PlayerState.BUFFERING) {
                 event.target.playVideo();
                 event.target.seekTo(event.target.getCurrentTime(), true);
@@ -142,6 +123,14 @@
                 playing = false; // Well we dont need this..
             }
         }
+		setInterval(()=>{
+		  const adOverlay = document.querySelector('.ytp-ad-overlay-close-container');
+		  const skipButton = document.querySelector('.ytp-ad-skip-button');
+		  if(adOverlay !=undefined)
+			adOverlay.click();
+		  if(skipButton != undefined)
+			skipButton.click();
+		}, 2000);
     </script>
 </body>
 
